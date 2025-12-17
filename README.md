@@ -29,9 +29,6 @@ DB_USER=postgres
 DB_NAME=db
 ```
 
-- **FE_URL**: Địa chỉ Frontend.
-- **DB_PASSWORD**, **DB_USER**, **DB_NAME**: Thông tin kết nối đến PostgreSQL.
-
 ### Bước 3: Tạo file cấu hình ứng dụng (appsettings.json)
 
 Sao chép file `appsettings.json.example` và đổi tên thành `appsettings.json`. Sau đó, thay thế nội dung của file `appsettings.json` bằng đoạn mã sau:
@@ -53,10 +50,6 @@ Sao chép file `appsettings.json.example` và đổi tên thành `appsettings.js
   "AllowedHosts": "*"
 }
 ```
-
-- **DefaultConnection**: Cấu hình chuỗi kết nối database.
-- **Jwt.Token**: Mã token JWT dùng để xác thực.
-- **Logging**: Thiết lập logging cho ứng dụng.
 
 ### Bước 4: Cài đặt và Khởi chạy Backend
 
@@ -97,8 +90,6 @@ Tạo file `.env` trong thư mục `fe` và dán nội dung sau vào file:
 VITE_BE_URL=http://localhost:8080/api
 ```
 
-- **VITE_BE_URL**: Địa chỉ Backend API (mặc định là `localhost:8080`).
-
 ### Bước 3: Cài đặt và Khởi chạy Frontend
 
 Tại terminal của thư mục `fe`, chạy các lệnh sau:
@@ -129,9 +120,3 @@ Sau khi hoàn thành các bước trên và hệ thống đã được khởi ch
 
 - **Docker**: Đảm bảo Docker đã được cài đặt và chạy trên máy của bạn.
 - **Ports**: Kiểm tra xem các cổng không bị xung đột với các ứng dụng khác trên máy.
-
-Nếu bạn gặp bất kỳ vấn đề gì, đừng ngần ngại chia sẻ với mình để hỗ trợ nhé!
-
----
-
-Hy vọng định dạng Markdown này sẽ dễ đọc hơn cho bạn!

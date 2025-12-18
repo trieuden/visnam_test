@@ -1,4 +1,4 @@
-import { Stack, Divider, Button, Dialog, DialogTitle } from '@mui/material';
+import { Stack, Divider, Button, Dialog, DialogTitle, Box } from '@mui/material';
 import { useEffect, useState } from 'react';
 import Cookies from 'js-cookie';
 
@@ -95,7 +95,7 @@ export const HomePage = () => {
       {/* Cart */}
       <Stack spacing={4} sx={{ boxShadow: '0px 0px 10px #ffffff' }} className="rounded-lg p-4 min-w-[450px] w-[450px]">
         <h1 className="text-2xl font-semibold">Giỏ Hàng</h1>
-        <Stack className="px-3">
+        <Stack className="px-3 overflow-y-auto custom-scrollbar" spacing={2}>
           {cart.length === 0 ? (
             <span className="italic text-gray-500">Chưa có sản phẩm trong giỏ hàng</span>
           ) : (
@@ -105,23 +105,31 @@ export const HomePage = () => {
           )}
         </Stack>
         {cart.length > 0 && (
-          <Stack direction={'row'} justifyContent="space-around" alignItems="center">
-            <Button
-              className="w-[160px] bg-red-500 hover:bg-red-700"
-              variant="contained"
-              onClick={() => {
-                if (confirm('Bạn có chắc chắn muốn xóa giỏ hàng?')) {
-                  Cookies.remove('cart');
-                  setCart([]);
-                }
-              }}
-            >
-              Xóa Giỏ Hàng
-            </Button>
-            <Button className="w-[160px]" variant="contained" color="primary" onClick={() => setOpenPaymentConfirm(true)}>
-              Thanh Toán
-            </Button>
-          </Stack>
+          <Box>
+            <span className="flex self-end justify-end font-bold mb-4 text-[18px]">
+              Tổng tiền:{' '}
+              {cart
+                .reduce((total, item) => total + item.product.price * item.quantity, 0)
+                .toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}
+            </span>
+            <Stack direction={'row'} justifyContent="space-around" alignItems="center">
+              <Button
+                className="w-[160px] bg-red-500 hover:bg-red-700"
+                variant="contained"
+                onClick={() => {
+                  if (confirm('Bạn có chắc chắn muốn xóa giỏ hàng?')) {
+                    Cookies.remove('cart');
+                    setCart([]);
+                  }
+                }}
+              >
+                Xóa Giỏ Hàng
+              </Button>
+              <Button className="w-[160px]" variant="contained" color="primary" onClick={() => setOpenPaymentConfirm(true)}>
+                Thanh Toán
+              </Button>
+            </Stack>
+          </Box>
         )}
       </Stack>
       <Divider />

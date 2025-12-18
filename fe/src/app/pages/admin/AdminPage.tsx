@@ -10,8 +10,10 @@ export const AdminPage = () => {
   const [orders, setOrders] = useState<InvoiceModel[]>([]);
   const [oldInvoice, setOldInvoice] = useState<InvoiceModel[]>();
 
+  const BE_URL = import.meta.env.VITE_WS_URL || 'http://localhost:8080';
+
   useEffect(() => {
-    const connection = new HubConnectionBuilder().withUrl('http://localhost:5237/hub/orders').withAutomaticReconnect().build();
+    const connection = new HubConnectionBuilder().withUrl(`${BE_URL}/orders`).withAutomaticReconnect().build();
 
     connection.start().catch((err) => console.error('🔴 Lỗi kết nối SignalR: ', err));
 

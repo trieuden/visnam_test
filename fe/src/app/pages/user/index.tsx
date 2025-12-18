@@ -1,13 +1,13 @@
-import { Box, Stack, Divider, Button, Dialog, DialogTitle } from '@mui/material';
-import { Product } from './components/Product';
+import { Stack, Divider, Button, Dialog, DialogTitle } from '@mui/material';
 import { useEffect, useState } from 'react';
-import type { ProductModel } from '../../../Models/ProductModel';
-import { getAllProducts } from '../../../services/ProductServices';
 import Cookies from 'js-cookie';
-import { useAuth } from '../../../context/AuthContext';
-import { CartItem } from './components/CartItem';
-import type { CreateInvoiceDto } from '../../../Models/InvoiceModel';
-import { CreateInvoice } from '../../../services/InvoiceServices';
+
+import { Product, CartItem } from '@/app/pages/user/components';
+import { useAuth } from '@/context/AuthContext';
+
+import type { CreateInvoiceDto, ProductModel } from '@/models';
+import { CreateInvoice } from '@/services/InvoiceServices';
+import { getAllProducts } from '@/services/ProductServices';
 
 export type CartModel = {
   userId: string;

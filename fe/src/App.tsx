@@ -1,11 +1,10 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import { AuthProvider, useAuth } from './context/AuthContext';
 import { CircularProgress, Box } from '@mui/material';
 import { useEffect, useState } from 'react';
-import { LoginPage } from './app/pages/Login';
-import { HomePage } from './app/pages/user';
-import { AdminPage } from './app/pages/admin/AdminPage';
-import type { UserModel } from './Models/UserModel';
+
+import { HomePage, LoginPage, AdminPage } from '@/app/pages';
+import { AuthProvider, useAuth } from './context/AuthContext';
+import type { UserModel } from '@/models/UserModel';
 
 const MainRouter = () => {
   const { user, isLoading } = useAuth();

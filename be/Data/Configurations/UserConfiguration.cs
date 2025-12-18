@@ -12,7 +12,7 @@ namespace be.Data.Configurations
             builder.HasKey(u => u.id);
 
             builder.Property(u => u.id)
-                   .HasDefaultValueSql("gen_random_uuid()"); // Sử dụng hàm tạo UUID của PostgreSQL
+                   .HasDefaultValueSql("gen_random_uuid()");
 
             builder.Property(u => u.username).IsRequired().HasMaxLength(50);
             builder.Property(u => u.email).IsRequired().HasMaxLength(100);

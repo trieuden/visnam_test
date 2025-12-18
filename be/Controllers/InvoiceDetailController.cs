@@ -1,8 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using be.Data;
 using be.Models;
-using be.DTOs;
 using be.Services.Interfaces;
 
 namespace be.Controllers

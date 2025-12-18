@@ -3,12 +3,10 @@ using be.DTOs;
 using be.Models;
 using be.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
-using BCrypt.Net;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
-using be.DTOs.be.DTOs;
 
 namespace be.Services.Implements
 {

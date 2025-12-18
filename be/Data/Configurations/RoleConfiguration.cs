@@ -10,6 +10,8 @@ namespace be.Data.Configurations
         {
             builder.HasKey(r => r.id);
             builder.Property(r => r.name).IsRequired().HasMaxLength(20);
+            builder.Property(r => r.id)
+                   .HasDefaultValueSql("gen_random_uuid()");
 
             builder.HasData(
                 new Role

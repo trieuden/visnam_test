@@ -1,6 +1,4 @@
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using be.Data;
 using be.Models;
 using be.Services.Interfaces;
 

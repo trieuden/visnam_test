@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { Box, Button, Input, Stack, Typography } from '@mui/material';
 import Cookies from 'js-cookie';
-import { useAuth } from '../../context/AuthContext';
-import { Login } from '../../services/AuthServices';
+import { useAuth } from '@/context/AuthContext';
+import { Login } from '@/services/AuthServices';
 
 export const LoginPage = () => {
   const [username, setUsername] = useState('user');

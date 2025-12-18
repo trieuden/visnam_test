@@ -1,13 +1,14 @@
-import { createContext, useContext, useState, useEffect } from 'react';
 import type { ReactNode } from 'react';
-import type { UserModel } from '../Models/UserModel';
+import { createContext, useContext, useState, useEffect } from 'react';
 import Cookies from 'js-cookie';
-import { getMe, Login } from '../services/AuthServices';
+
+import type { UserModel } from '@/models';
+import { getMe } from '@/services/AuthServices';
 
 interface AuthContextType {
   user: UserModel | null;
   isLoading: boolean;
-  refreshUser: () => Promise<void>; // Hàm để gọi lại getMe khi cần (ví dụ sau khi update profile)
+  refreshUser: () => Promise<void>;
   logout: () => void;
 }
 

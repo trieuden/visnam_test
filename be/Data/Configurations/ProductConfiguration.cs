@@ -10,6 +10,8 @@ namespace be.Data.Configurations
         {
             builder.HasKey(r => r.id);
             builder.Property(r => r.name).IsRequired().HasMaxLength(20);
+            builder.Property(r => r.id)
+                   .HasDefaultValueSql("gen_random_uuid()");
 
             builder.HasData(
                 new Product
@@ -25,6 +27,41 @@ namespace be.Data.Configurations
                     name = "Red Bull",
                     price = 20000,
                     imageUrl = "https://ceklist.id/wp-content/uploads/2022/12/2-Minuman-Berenergi-Kratingdaeng-Red-Bull.jpeg"
+                },
+                new Product
+                {
+                    id = Guid.NewGuid().ToString(),
+                    name = "Coca Cola",
+                    price = 12000,
+                    imageUrl = "https://www.pngplay.com/wp-content/uploads/15/Regular-Coke-Can-Coca-Cola-Transparent-Background.png"
+                },
+                new Product
+                {
+                    id = Guid.NewGuid().ToString(),
+                    name = "Pepsi",
+                    price = 11000,
+                    imageUrl = "https://www.pepsicopartners.com/medias/1200Wx1200H-1-HYK-24461.jpeg?context=bWFzdGVyfHJvb3R8NjI2OTB8aW1hZ2UvanBlZ3xhRFJtTDJoaU1DOHhNREE0TURNMU5qWTJNek15Tmk4eE1qQXdWM2d4TWpBd1NGOHhMVWhaU3kweU5EUTJNUzVxY0dWbnxlZmViMjA1ZDhmMTc4ODY4ODNjMDQ2YmM1ZjNjYTNlYmVkYTUwZmNjMmM2Mjc5MGQ5OWVjMjIxZDdmOTEyYjI3"
+                },
+                new Product
+                {
+                    id = Guid.NewGuid().ToString(),
+                    name = "Mirinda",
+                    price = 10000,
+                    imageUrl = "https://th.bing.com/th/id/R.c9c3b8ec26d18604dff1828b8fc54cea?rik=m6L7Fsofb4LXmg&pid=ImgRaw&r=0"
+                },
+                new Product
+                {
+                    id = Guid.NewGuid().ToString(),
+                    name = "Fanta",
+                    price = 10000,
+                    imageUrl = "https://www.coca-cola.com/content/dam/onexp/mv/home-images/fanta/Fanta-desktop.png"
+                },
+                new Product
+                {
+                    id = Guid.NewGuid().ToString(),
+                    name = "Sprite",
+                    price = 10000,
+                    imageUrl = "https://pngimg.com/uploads/sprite/sprite_PNG98773.png"
                 }
             );
         }

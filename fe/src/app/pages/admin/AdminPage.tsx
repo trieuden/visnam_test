@@ -1,17 +1,10 @@
 import { useEffect, useState } from 'react';
+import { Stack } from '@mui/material';
 import { HubConnectionBuilder } from '@microsoft/signalr';
-import { GetAllInvoices } from '../../../services/InvoiceServices';
-import type { InvoiceModel } from '../../../Models/InvoiceModel';
-import { Box, Stack } from '@mui/material';
 
-const timeFormatter = new Intl.DateTimeFormat('vi-VN', {
-  hour: '2-digit',
-  minute: '2-digit',
-  second: '2-digit',
-  day: '2-digit',
-  month: '2-digit',
-  year: 'numeric',
-});
+import { GetAllInvoices } from '@/services/InvoiceServices';
+import type { InvoiceModel } from '@/models/InvoiceModel';
+import { timeFormatter } from '@/utils/TimeFormat';
 
 export const AdminPage = () => {
   const [orders, setOrders] = useState<InvoiceModel[]>([]);
@@ -32,13 +25,13 @@ export const AdminPage = () => {
   }, []);
 
   useEffect(() => {
-    const fetchInitialOrders = async () => {
+    const fetchOldInvoices = async () => {
       const res = await GetAllInvoices();
       if (res) {
         setOldInvoice(res);
       }
     };
-    fetchInitialOrders();
+    fetchOldInvoices();
   }, []);
 
   return (

@@ -1,12 +1,14 @@
-import { Box, Stack, Input, IconButton } from '@mui/material';
+import { Box, Stack, IconButton } from '@mui/material';
+import { Remove, Clear, Add } from '@mui/icons-material';
+
 import type { CartModel } from '..';
-import AddIcon from '@mui/icons-material/Add';
-import { Remove, Clear } from '@mui/icons-material';
+
 type CartItemProps = {
   cartItem: CartModel;
   handleChangeQuantity: (productId: string, quantity: number) => void;
   handleDeleteItem: (productId: string) => void;
 };
+
 export const CartItem = ({ cartItem, handleChangeQuantity, handleDeleteItem }: CartItemProps) => {
   const handleIncrement = () => {
     handleChangeQuantity?.(cartItem.product.id, cartItem.quantity + 1);
@@ -32,7 +34,7 @@ export const CartItem = ({ cartItem, handleChangeQuantity, handleDeleteItem }: C
         </IconButton>
         <span>{cartItem.quantity}</span>
         <IconButton onClick={handleIncrement} size="small">
-          <AddIcon fontSize="small" />
+          <Add fontSize="small" />
         </IconButton>
       </Box>
       <span className="justify-end">

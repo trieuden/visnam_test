@@ -1,11 +1,12 @@
 import { Box, Button } from '@mui/material';
-import type { ProductModel } from '../../../../Models/ProductModel';
 import { AddOutlined } from '@mui/icons-material';
+import type { ProductModel } from '@/models/ProductModel';
 
 type ProductProps = {
   product: ProductModel;
   handleAddToCart: (product: ProductModel, quantity: number) => void;
 };
+
 export const Product = ({ product, handleAddToCart }: ProductProps) => {
   return (
     <Box

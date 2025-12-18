@@ -1,4 +1,4 @@
-import type { CreateInvoiceDto } from '../Models/InvoiceModel';
+import type { CreateInvoiceDto } from '@/models';
 import api from './api';
 
 export const CreateInvoice = async (invoice: CreateInvoiceDto): Promise<void> => {
@@ -9,6 +9,7 @@ export const CreateInvoice = async (invoice: CreateInvoiceDto): Promise<void> =>
     throw error;
   }
 };
+
 export const GetAllInvoices = async () => {
   try {
     const response = await api.get('/invoices');

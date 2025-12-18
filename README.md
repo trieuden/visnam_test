@@ -30,7 +30,7 @@ Sao chép file `appsettings.json.example` và đổi tên thành `appsettings.js
 ```json
 {
   "ConnectionStrings": {
-    "DefaultConnection": "Host=db;Port=5433;Database=db;Username=postgres;Password=123456"
+    "DefaultConnection": "Host=localhost;Port=5433;Database=db;Username=postgres;Password=123456"
   },
   "Jwt": {
     "Token": "k9s82h492b492b4792b4k92b492bk492b492bk49b2k492bk492b2k94b29k4b294kb294kb294kb29k4b294k9b2k4"
@@ -47,7 +47,7 @@ Sao chép file `appsettings.json.example` và đổi tên thành `appsettings.js
 
 ### Bước 3: Cài đặt và Khởi chạy Backend
 
-1. **Di chuyển vào thư mục backend**:
+1. **Mở terminal và di chuyển vào thư mục backend**:
 
 ```bash
 cd be
@@ -101,7 +101,7 @@ VITE_BE_URL=http://localhost:8080/api
 
 ### Bước 2: Cài đặt và Khởi chạy Frontend
 
-1. **Di chuyển vào thư mục frontend**
+1. **Mở Terminal mới và di chuyển vào thư mục frontend**
 
 ```bash
 cd fe
@@ -128,6 +128,31 @@ Sau khi hoàn thành các bước trên và hệ thống đã được khởi ch
 
 - **Trang web (Frontend)**: [http://localhost:5173](http://localhost:5173)
 - **API Swagger (Backend)**: [http://localhost:8080/swagger](http://localhost:8080/swagger)
+
+---
+
+## 5. Kiểm thử đăng nhập với 2 trình duyệt
+
+1. **Mở 2 trình duyệt khác nhau** (hoặc 2 cửa sổ ẩn danh):
+
+- Một trình duyệt cho tài khoản user (vai trò máy POS tạo đơn hàng).
+- Một trình duyệt cho tài khoản admin (vai trò admin, xem đơn hàng cập nhật tự động).
+
+2. **Đăng nhập tài khoản user**:
+
+- Tài khoản: `user`
+- Mật khẩu: `user123`
+- Sau khi đăng nhập, sử dụng chức năng tạo đơn hàng như máy POS.
+
+3. **Đăng nhập tài khoản admin**:
+
+- Tài khoản: `admin`
+- Mật khẩu: `admin123`
+- Sau khi đăng nhập, vào trang quản lý đơn hàng để theo dõi các đơn hàng được cập nhật tự động (real-time).
+
+4. **Kiểm tra**:
+
+- Khi user tạo đơn hàng mới, trình duyệt admin sẽ thấy đơn hàng mới xuất hiện tự động mà không cần reload trang.
 
 ---
 

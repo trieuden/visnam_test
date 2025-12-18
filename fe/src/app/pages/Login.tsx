@@ -5,8 +5,8 @@ import { useAuth } from '@/context/AuthContext';
 import { Login } from '@/services/AuthServices';
 
 export const LoginPage = () => {
-  const [username, setUsername] = useState('user');
-  const [password, setPassword] = useState('user123');
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
   const { refreshUser } = useAuth();
 
   const handleLogin = async () => {

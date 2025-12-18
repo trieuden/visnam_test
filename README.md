@@ -131,7 +131,7 @@ Sau khi hoàn thành các bước trên và hệ thống đã được khởi ch
 
 ---
 
-## 5. Kiểm thử đăng nhập với 2 trình duyệt
+## 5. Chạy trang web
 
 1. **Mở 2 trình duyệt khác nhau** (hoặc 2 cửa sổ ẩn danh):
 

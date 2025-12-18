@@ -37,8 +37,8 @@ export const AdminPage = () => {
   return (
     <Stack spacing={2} className="p-5 text-black">
       <h1 className="text-2xl text-white font-bold mb-4">Danh sách đơn hàng trực tiếp</h1>
-
-      <Stack spacing={2}>
+      {orders.length === 0 && <p className="text-gray-500 italic px-2">Chưa có đơn hàng mới nào!</p>}
+      <Stack spacing={2} className="p-2">
         {orders.map((order, index) => (
           <Stack spacing={1} key={index} className="p-4 border rounded bg-green-300">
             <Stack direction={'row'} spacing={2} alignItems={'end'}>
@@ -52,21 +52,24 @@ export const AdminPage = () => {
         ))}
       </Stack>
 
-      <Stack spacing={2}>
-        {oldInvoice?.map((order, index) => (
-          <Stack direction={'row'} spacing={2} alignItems={'center'} key={index} className="p-4 border rounded bg-green-50">
-            <span>{index + 1}</span>
-            <Stack spacing={1}>
-              <Stack direction={'row'} spacing={2} alignItems={'end'}>
-                <p className="font-bold">Đơn hàng: {order.id}</p>
-                <span className="italic text-[14px] ">{timeFormatter.format(new Date(order.dateCreated))}</span>
+      <Stack className="p-3 border border-white rounded-lg mt-6">
+        <h1 className="text-2xl text-white font-bold mb-4">Danh sách đơn hàng</h1>
+        <Stack spacing={2} className="p-2">
+          {oldInvoice?.map((order, index) => (
+            <Stack direction={'row'} spacing={2} alignItems={'start'} key={index} className="p-4 border rounded bg-[#d9d9d9]">
+              <span className="text-[18px] font-bold">{index + 1}</span>
+              <Stack spacing={1}>
+                <Stack direction={'row'} spacing={2} alignItems={'end'}>
+                  <p className="font-bold">Đơn hàng: {order.id}</p>
+                  <span className="italic text-[14px] ">{timeFormatter.format(new Date(order.dateCreated))}</span>
+                </Stack>
+                <p className="font-bold">
+                  Tổng tiền: <span className="font-normal">{order.totalAmount.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}</span>
+                </p>
               </Stack>
-              <p className="font-bold">
-                Tổng tiền: <span className="font-normal">{order.totalAmount.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}</span>
-              </p>
             </Stack>
-          </Stack>
-        ))}
+          ))}
+        </Stack>
       </Stack>
     </Stack>
   );

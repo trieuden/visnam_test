@@ -97,6 +97,7 @@ Tạo file `.env` trong thư mục `fe` và dán nội dung sau vào file:
 
 ```ini
 VITE_BE_URL=http://localhost:8080/api
+VITE_WS_URL=http://localhost:8080/hub
 ```
 
 ### Bước 2: Cài đặt và Khởi chạy Frontend

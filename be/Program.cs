@@ -49,22 +49,6 @@ var app = builder.Build();
 
 app.UseCors("AllowFrontend");
 
-
-// MIGRATION --
-using (var scope = app.Services.CreateScope())
-{
-    var services = scope.ServiceProvider;
-    try
-    {
-        var context = services.GetRequiredService<AppDbContext>();
-        context.Database.Migrate();
-    }
-    catch (Exception ex)
-    {
-        Console.WriteLine($"Lỗi kết nối DB: {ex.Message}");
-    }
-}
-
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();

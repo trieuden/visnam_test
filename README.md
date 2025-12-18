@@ -12,13 +12,7 @@ git clone https://github.com/trieuden/visnam_test.git
 
 ## 2. Cấu Hình Backend (BE)
 
-### Bước 1: Di chuyển vào thư mục backend
-
-```bash
-cd be
-```
-
-### Bước 2: Tạo file cấu hình Docker (.env)
+### Bước 1: Tạo file cấu hình Docker (.env)
 
 Tạo một file mới tên là `.env` trong thư mục `be` và dán nội dung sau vào file `.env`:
 
@@ -29,14 +23,14 @@ DB_USER=postgres
 DB_NAME=db
 ```
 
-### Bước 3: Tạo file cấu hình ứng dụng (appsettings.json)
+### Bước 2: Tạo file cấu hình ứng dụng (appsettings.json)
 
 Sao chép file `appsettings.json.example` và đổi tên thành `appsettings.json`. Sau đó, thay thế nội dung của file `appsettings.json` bằng đoạn mã sau:
 
 ```json
 {
   "ConnectionStrings": {
-    "DefaultConnection": "Host=db;Port=5432;Database=db;Username=postgres;Password=123456"
+    "DefaultConnection": "Host=db;Port=5433;Database=db;Username=postgres;Password=123456"
   },
   "Jwt": {
     "Token": "k9s82h492b492b4792b4k92b492bk492b492bk49b2k492bk492b2k94b29k4b294kb294kb294kb29k4b294k9b2k4"
@@ -51,38 +45,53 @@ Sao chép file `appsettings.json.example` và đổi tên thành `appsettings.js
 }
 ```
 
-### Bước 4: Cài đặt và Khởi chạy Backend
+### Bước 3: Cài đặt và Khởi chạy Backend
+
+1. **Di chuyển vào thư mục backend**:
+
+```bash
+cd be
+```
 
 Tại terminal của thư mục `be`, chạy các lệnh sau:
 
-1. **Cài đặt các thư viện cần thiết**:
+2. **Cài đặt các thư viện cần thiết**:
 
    ```bash
    dotnet restore
    ```
 
-2. **(Tùy chọn) Chạy thử server ở local để kiểm tra lỗi**:
+3. **(Tùy chọn) Chạy thử server ở local để kiểm tra lỗi**:
 
    ```bash
    dotnet run
    ```
 
-3. **Build và chạy toàn bộ hệ thống (Database + API) bằng Docker**:
+4. **Build và chạy toàn bộ hệ thống (Database + API) bằng Docker**:
+
    ```bash
    docker compose up --build
    ```
+
+5. **Tạo migration seed data và cập nhật database**
+
+Sau khi đã cấu hình seed data trong code (HasData), bạn cần chạy các lệnh sau để cập nhật dữ liệu mẫu vào database:
+
+```bash
+dotnet ef migrations add SeedData
+```
+
+Sau đó chạy tiếp:
+
+```bash
+dotnet ef database update
+```
 
 Docker sẽ tự động tạo các container cho Database và API.
 
 ## 3. Cấu Hình Frontend (FE)
 
-### Bước 1: Di chuyển vào thư mục frontend
-
-```bash
-cd fe
-```
-
-### Bước 2: Tạo file cấu hình môi trường (.env)
+### Bước 1: Tạo file cấu hình môi trường (.env)
 
 Tạo file `.env` trong thư mục `fe` và dán nội dung sau vào file:
 
@@ -90,17 +99,23 @@ Tạo file `.env` trong thư mục `fe` và dán nội dung sau vào file:
 VITE_BE_URL=http://localhost:8080/api
 ```
 
-### Bước 3: Cài đặt và Khởi chạy Frontend
+### Bước 2: Cài đặt và Khởi chạy Frontend
+
+1. **Di chuyển vào thư mục frontend**
+
+```bash
+cd fe
+```
 
 Tại terminal của thư mục `fe`, chạy các lệnh sau:
 
-1. **Cài đặt các thư viện node_modules**:
+2. **Cài đặt các thư viện node_modules**:
 
    ```bash
    npm install
    ```
 
-2. **Khởi chạy server development**:
+3. **Khởi chạy server development**:
    ```bash
    npm run dev
    ```
